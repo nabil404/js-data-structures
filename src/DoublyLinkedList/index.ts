@@ -23,6 +23,16 @@ export class DoublyLinkedList<T> {
     return this._length;
   }
 
+  toArray(): T[] {
+    let array: T[] = [];
+    let current = this._head;
+    while (current) {
+      array.push(current.data);
+      current = current.next;
+    }
+    return array;
+  }
+
   push(value: T): Link<T> {
     const newNode = new Link<T>(value);
     if (!this._head) {
@@ -50,5 +60,29 @@ export class DoublyLinkedList<T> {
     }
     this._length--;
     return poppedNode!;
+  }
+
+  shift(): Link<T> {
+    this._isEmpty();
+    const shiftedHead = this._head;
+    if (this._length === 1) {
+      this._head = this._tail = null;
+    } else {
+      this._head = shiftedHead!.next;
+      this._head!.prev = null;
+      shiftedHead!.next = null;
+    }
+    this._length--;
+    return shiftedHead!;
+  }
+
+  unshift(value: T): Link<T> {
+    const newNode = new Link<T>(value);
+    if (this._length === 0) return this.push(value);
+    this._head!.prev = newNode;
+    newNode.next = this._head;
+    this._head = newNode;
+    this._length++;
+    return newNode;
   }
 }

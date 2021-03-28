@@ -6,7 +6,10 @@ export declare class DoublyLinkedList<T> {
     private _isEmpty;
     constructor(data?: T[]);
     get length(): number;
+    toArray(): T[];
     push(value: T): Link<T>;
     pop(): Link<T>;
+    shift(): Link<T>;
+    unshift(value: T): Link<T>;
 }
 //# sourceMappingURL=index.d.ts.map
