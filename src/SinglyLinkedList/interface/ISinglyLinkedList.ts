@@ -1,3 +1,4 @@
+import { SinglyLinkedList } from "..";
 import { UniDirLink } from "../../helpers/UniDirLink";
 
 export interface ISinglyLinkedList<T> {
@@ -10,4 +11,5 @@ export interface ISinglyLinkedList<T> {
   set(index: number, value: any): boolean;
   insert(index: number, value: T): boolean;
   remove(index: number): boolean;
+  reverse(): SinglyLinkedList<T>;
 }

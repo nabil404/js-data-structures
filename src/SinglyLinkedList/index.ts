@@ -100,7 +100,7 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     return current!;
   }
 
-  set(index: number, value: any): boolean {
+  set(index: number, value: T): boolean {
     if (index >= this._length || index < 0) throw new Error("Invalid index");
     let counter = 0;
     let current = this._head;
@@ -140,5 +140,21 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
       this._length--;
     }
     return true;
+  }
+
+  reverse(): SinglyLinkedList<T> {
+    if (this._length <= 1) return this;
+    let node = this._head;
+    this._head = this._tail;
+    this._tail = node;
+    let prev = null;
+    let next;
+    for (let i = 0; i < this._length; i++) {
+      next = node?.next;
+      node!.next = prev;
+      prev = node;
+      node = next!;
+    }
+    return this;
   }
 }

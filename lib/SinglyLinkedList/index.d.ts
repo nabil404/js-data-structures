@@ -13,8 +13,9 @@ export declare class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     shift(): Link<T>;
     unshift(value: T): Link<T>;
     get(index: number): Link<T>;
-    set(index: number, value: any): boolean;
+    set(index: number, value: T): boolean;
     insert(index: number, value: T): boolean;
     remove(index: number): boolean;
+    reverse(): SinglyLinkedList<T>;
 }
 //# sourceMappingURL=index.d.ts.map
