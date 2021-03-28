@@ -1,0 +1,1 @@
+{"version":3,"file":"BiDirLink.d.ts","sourceRoot":"","sources":["../../src/helpers/BiDirLink.ts"],"names":[],"mappings":"AAAA,qBAAa,SAAS,CAAC,CAAC;IACf,IAAI,EAAE,CAAC,CAAC;IACR,IAAI,EAAE,SAAS,CAAC,CAAC,CAAC,GAAG,IAAI,CAAC;IAC1B,IAAI,EAAE,SAAS,CAAC,CAAC,CAAC,GAAG,IAAI,CAAC;gBACrB,IAAI,EAAE,CAAC;CAKpB"}
