@@ -8,10 +8,15 @@ export class DoublyLinkedList<T> {
     if (this._length < 1) throw new Error("List is empty");
   }
 
-  constructor() {
+  constructor(data?: T[]) {
     this._head = null;
     this._tail = null;
     this._length = 0;
+    if (data?.length) {
+      for (let el of data) {
+        this.push(el);
+      }
+    }
   }
 
   get length(): number {

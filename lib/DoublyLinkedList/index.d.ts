@@ -4,7 +4,7 @@ export declare class DoublyLinkedList<T> {
     private _tail;
     private _length;
     private _isEmpty;
-    constructor();
+    constructor(data?: T[]);
     get length(): number;
     push(value: T): Link<T>;
     pop(): Link<T>;

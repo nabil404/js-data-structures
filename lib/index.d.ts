@@ -1,3 +1,4 @@
 import { SinglyLinkedList } from "./SinglyLinkedList";
-export { SinglyLinkedList };
+import { DoublyLinkedList } from "./DoublyLinkedList";
+export { SinglyLinkedList, DoublyLinkedList };
 //# sourceMappingURL=index.d.ts.map
