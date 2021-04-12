@@ -1,6 +1,7 @@
 import { BiDirLink as Link } from "../helpers/BiDirLink";
+import { IDoublyLinkedList } from "./interface";
 
-export class DoublyLinkedList<T> {
+export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
   private _head: Link<T> | null;
   private _tail: Link<T> | null;
   private _length: number;
@@ -109,5 +110,40 @@ export class DoublyLinkedList<T> {
     const node = this.get(index);
     node!.data = value;
     return true;
+  }
+
+  insert(index: number, value: T): boolean {
+    if (index > this._length || index < 0) return false;
+    if (index === 0) return !!this.unshift(value);
+    if (index === this._length) !!this.push(value);
+
+    const newNode = new Link<T>(value);
+    const node = this.get(index - 1);
+    let prevNext = node!.next;
+    node!.next = newNode;
+    newNode.prev = node;
+    newNode.next = prevNext;
+    prevNext!.prev = newNode;
+    this._length++;
+    return true;
+  }
+
+  remove(index: number): boolean {
+    if (index >= this._length || index < 0) return false;
+    if (index === 0) return !!this.shift();
+    if (index === this._length - 1) !!this.pop();
+
+    let node = this.get(index);
+    let prevNext = node!.next;
+    let prevPrev = node!.prev;
+    prevPrev!.next = prevNext;
+    prevNext!.prev = prevPrev;
+    this._length--;
+
+    return true;
+  }
+
+  reverse(): DoublyLinkedList<T> {
+    return this;
   }
 }

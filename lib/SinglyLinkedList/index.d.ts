@@ -1,5 +1,6 @@
 import { ISinglyLinkedList } from "./interface/ISinglyLinkedList";
 import { UniDirLink as Link } from "../helpers/UniDirLink";
+export * from "./interface";
 export declare class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     private _head;
     private _tail;

@@ -1,5 +1,5 @@
 import { SinglyLinkedList } from "..";
-import { UniDirLink } from "../../helpers/UniDirLink";
+import { UniDirLink } from "../../helpers";
 
 export interface ISinglyLinkedList<T> {
   toArray(): T[];
