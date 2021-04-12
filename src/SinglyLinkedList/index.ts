@@ -5,9 +5,6 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
   private _head: Link<T> | null;
   private _tail: Link<T> | null;
   private _length: number;
-  private _isEmpty(): void {
-    if (this._length < 1) throw new Error("List is empty");
-  }
 
   constructor(data?: T[]) {
     this._head = null;
@@ -47,8 +44,8 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     return newNode;
   }
 
-  pop(): Link<T> {
-    this._isEmpty();
+  pop(): Link<T> | null {
+    if (this._length < 1) return null;
     let current = this._head;
     let temp = current;
     while (current?.next) {
@@ -64,8 +61,8 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     return current!;
   }
 
-  shift(): Link<T> {
-    this._isEmpty();
+  shift(): Link<T> | null {
+    if (this._length < 1) return null;
     let currrent = this._head;
     this._head = this._head!.next;
     this._length--;
@@ -89,8 +86,8 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     return newNode;
   }
 
-  get(index: number): Link<T> {
-    if (index >= this._length || index < 0) throw new Error("Invalid index");
+  get(index: number): Link<T> | null {
+    if (index >= this._length || index < 0) return null;
     let counter = 0;
     let current = this._head;
     while (counter !== index) {
@@ -101,19 +98,14 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
   }
 
   set(index: number, value: T): boolean {
-    if (index >= this._length || index < 0) throw new Error("Invalid index");
-    let counter = 0;
-    let current = this._head;
-    while (counter !== index) {
-      current = current!.next;
-      counter++;
-    }
-    current!.data = value;
+    if (index >= this._length || index < 0) return false;
+    const node = this.get(index);
+    node!.data = value;
     return true;
   }
 
   insert(index: number, value: T): boolean {
-    if (index > this._length || index < 0) throw new Error("Invalid index");
+    if (index > this._length || index < 0) return false;
     if (index === this._length) return !!this.push(value);
     if (index === 0) return !!this.unshift(value);
 

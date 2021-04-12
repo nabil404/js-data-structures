@@ -4,9 +4,6 @@ export class DoublyLinkedList<T> {
   private _head: Link<T> | null;
   private _tail: Link<T> | null;
   private _length: number;
-  private _isEmpty(): void {
-    if (this._length < 1) throw new Error("List is empty");
-  }
 
   constructor(data?: T[]) {
     this._head = null;
@@ -47,8 +44,8 @@ export class DoublyLinkedList<T> {
     return newNode;
   }
 
-  pop(): Link<T> {
-    this._isEmpty();
+  pop(): Link<T> | null {
+    if (this._length < 1) return null;
     const poppedNode = this._tail;
     if (this._length === 1) {
       this._head = null;
@@ -62,8 +59,8 @@ export class DoublyLinkedList<T> {
     return poppedNode!;
   }
 
-  shift(): Link<T> {
-    this._isEmpty();
+  shift(): Link<T> | null {
+    if (this._length < 1) return null;
     const shiftedHead = this._head;
     if (this._length === 1) {
       this._head = this._tail = null;
@@ -84,5 +81,33 @@ export class DoublyLinkedList<T> {
     this._head = newNode;
     this._length++;
     return newNode;
+  }
+
+  get(index: number): Link<T> | null {
+    if (index >= this._length || index < 0) return null;
+    let count, current;
+    if (index < this._length / 2) {
+      count = 0;
+      current = this._head;
+      while (count != index) {
+        current = current!.next;
+        count++;
+      }
+    } else {
+      count = this._length - 1;
+      current = this._tail;
+      while (count != index) {
+        current = current!.prev;
+        count--;
+      }
+    }
+    return current;
+  }
+
+  set(index: number, value: T): boolean {
+    if (index >= this._length || index < 0) return false;
+    const node = this.get(index);
+    node!.data = value;
+    return true;
   }
 }
