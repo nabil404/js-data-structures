@@ -3,10 +3,10 @@ import { UniDirLink } from "../../helpers";
 
 export interface ISinglyLinkedList<T> {
   toArray(): T[];
-  push(value: T): UniDirLink<T>;
+  push(value: T): SinglyLinkedList<T>;
   pop(): UniDirLink<T> | null;
   shift(): UniDirLink<T> | null;
-  unshift(value: T): UniDirLink<T>;
+  unshift(value: T): SinglyLinkedList<T>;
   get(index: number): UniDirLink<T> | null;
   set(index: number, value: any): boolean;
   insert(index: number, value: T): boolean;

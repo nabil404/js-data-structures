@@ -31,7 +31,7 @@ export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
     return array;
   }
 
-  push(value: T): Link<T> {
+  push(value: T): DoublyLinkedList<T> {
     const newNode = new Link<T>(value);
     if (!this._head) {
       this._head = newNode;
@@ -42,7 +42,7 @@ export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
       this._tail = newNode;
     }
     this._length++;
-    return newNode;
+    return this;
   }
 
   pop(): Link<T> | null {
@@ -74,14 +74,14 @@ export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
     return shiftedHead!;
   }
 
-  unshift(value: T): Link<T> {
+  unshift(value: T): DoublyLinkedList<T> {
     const newNode = new Link<T>(value);
     if (this._length === 0) return this.push(value);
     this._head!.prev = newNode;
     newNode.next = this._head;
     this._head = newNode;
     this._length++;
-    return newNode;
+    return this;
   }
 
   get(index: number): Link<T> | null {
@@ -131,7 +131,7 @@ export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
   remove(index: number): boolean {
     if (index >= this._length || index < 0) return false;
     if (index === 0) return !!this.shift();
-    if (index === this._length - 1) !!this.pop();
+    if (index === this._length - 1) return !!this.pop();
 
     let node = this.get(index);
     let prevNext = node!.next;

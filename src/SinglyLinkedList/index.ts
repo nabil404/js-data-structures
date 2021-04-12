@@ -33,7 +33,7 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     return this._length;
   }
 
-  push(value: T): Link<T> {
+  push(value: T): SinglyLinkedList<T> {
     const newNode: Link<T> = new Link<T>(value);
     if (!this._head) {
       this._head = newNode;
@@ -43,7 +43,7 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
       this._tail = newNode;
     }
     this._length++;
-    return newNode;
+    return this;
   }
 
   pop(): Link<T> | null {
@@ -74,18 +74,18 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     return currrent!;
   }
 
-  unshift(value: T): Link<T> {
+  unshift(value: T): SinglyLinkedList<T> {
     const newNode: Link<T> = new Link<T>(value);
     if (this._length < 1) {
       this._head = newNode;
       this._tail = this._head;
       this._length++;
-      return newNode;
+      return this;
     }
     newNode.next = this._head;
     this._head = newNode;
     this._length++;
-    return newNode;
+    return this;
   }
 
   get(index: number): Link<T> | null {

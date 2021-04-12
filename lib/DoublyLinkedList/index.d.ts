@@ -7,10 +7,10 @@ export declare class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
     constructor(data?: T[]);
     get length(): number;
     toArray(): T[];
-    push(value: T): Link<T>;
+    push(value: T): DoublyLinkedList<T>;
     pop(): Link<T> | null;
     shift(): Link<T> | null;
-    unshift(value: T): Link<T>;
+    unshift(value: T): DoublyLinkedList<T>;
     get(index: number): Link<T> | null;
     set(index: number, value: T): boolean;
     insert(index: number, value: T): boolean;
