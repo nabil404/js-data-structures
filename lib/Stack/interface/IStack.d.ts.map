@@ -1,0 +1,1 @@
+{"version":3,"file":"IStack.d.ts","sourceRoot":"","sources":["../../../src/Stack/interface/IStack.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,IAAI,CAAC;AAE3B,MAAM,WAAW,MAAM,CAAC,CAAC;IACvB,IAAI,CAAC,KAAK,EAAE,CAAC,GAAG,KAAK,CAAC,CAAC,CAAC,CAAC;IACzB,GAAG,IAAI,CAAC,GAAG,IAAI,CAAC;CACjB"}
